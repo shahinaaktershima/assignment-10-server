@@ -81,7 +81,7 @@ app.put('/shop/:id',async(req,res)=>{
   const result=await shopCollection.updateOne(filter,shop,option);
   res.send(result)
 })
-app.delete('/coffee/:id',async(req,res)=>{
+app.delete('/shop/:id',async(req,res)=>{
   const id=req.params.id;
   const query={_id: new ObjectId(id)}
   const result=await coffeeCollection.deleteOne(query);
