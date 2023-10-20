@@ -34,7 +34,7 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // addcards from local to mongodb 
-    
+   
 const shopCollection = client.db("shopDB").collection('shop');
 app.get('/shop',async(req,res)=>{
     const cursor =shopCollection.find();
@@ -81,6 +81,7 @@ app.delete('/shop/:id',async(req,res)=>{
   const result=await shopCollection.deleteOne(query);
   res.send(result)
      })
+   
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
