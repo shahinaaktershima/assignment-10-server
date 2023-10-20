@@ -34,13 +34,7 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
     // addcards from local to mongodb 
-    // const userCollection=client.db('userDB').collection('user')
-    // const shopCollection=client.db('shopDB').collection('shop');
-    // create user
-//    app.post('/shopcards',async(res,req)=>{
-//     const newCards=req.body;
-//     console.log(newCards);
-//    })
+    
 const shopCollection = client.db("shopDB").collection('shop');
 app.get('/shop',async(req,res)=>{
     const cursor =shopCollection.find();
@@ -72,7 +66,7 @@ app.put('/shop/:id',async(req,res)=>{
       shortdescription:updatedShop.shortdescription,
       brandname:updatedShop.brandname,
       type:updatedShop.type,
-      photourl:updatedShop.photourl,
+      price:updatedShop.price,
       image:updatedShop.image,
       rating:updatedShop.rating
     }
@@ -84,7 +78,7 @@ app.put('/shop/:id',async(req,res)=>{
 app.delete('/shop/:id',async(req,res)=>{
   const id=req.params.id;
   const query={_id: new ObjectId(id)}
-  const result=await coffeeCollection.deleteOne(query);
+  const result=await shopCollection.deleteOne(query);
   res.send(result)
      })
     // Send a ping to confirm a successful connection
